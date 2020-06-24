@@ -8,7 +8,7 @@ brew install git
 brew install ansible
 
 #Git clone the repo
-git clone https://github.com/patrickfnielsen/osx-dev
+git clone https://github.com/patrickfnielsen/osx-setup
 
 #Fix ansible localhost warning
 export ANSIBLE_LOCALHOST_WARNING=False
