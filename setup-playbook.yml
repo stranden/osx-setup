@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    terminal:
+      ITERM_PROFILE_PATH: "{{lookup('env', 'HOME')}}/.iterm"
+  roles:
+    #- { role: git, tags: git }
+    #- { role: applications, tags: applications }
+    #- { role: system-settings, tags: system-settings }
+    - { role: terminal, tags: terminal }
+    #- { role: vscode, tags: vscode }

@@ -1,0 +1,28 @@
+---
+    - name: Disable mouse acceleration
+      shell: defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+    - name: "Key Repeat: Fast (all the way to the right)"
+      shell: defaults write -g InitialKeyRepeat -int 15
+
+    - name: "Delay Until Repeat: Short (all the way to the right)"
+      shell: defaults write -g KeyRepeat -int 2
+
+    - name: "Untick 'Correct spelling automatically'"
+      shell: defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+    - name: "Untick 'Add full stop with double-space'"
+      shell: defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+
+    - name: Disable mouse acceleration
+      shell: defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+    - name: Download Powerline fonts
+      git:
+        repo: https://github.com/powerline/fonts.git
+        dest: $HOME/fonts
+        depth: 1
+
+    - name: Install powerline fonts
+      shell: cp -r $HOME/fonts/*/*.ttf /Library/Fonts/.
+      

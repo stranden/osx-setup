@@ -1,0 +1,8 @@
+---
+    - name: Install git + tools
+      homebrew: 
+        name: ["git", "git-extras"]
+        state: latest
+
+    - name: Copy gitconfig
+      template: src=gitconfig.j2 dest=~/.gitconfig

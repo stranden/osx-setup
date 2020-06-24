@@ -1,0 +1,121 @@
+---
+    - name: Install iTerm2
+      homebrew_cask: 
+        name: iterm2
+        state: present
+
+    - name: Create iTerm2 profile directory
+      environment: "{{terminal}}"
+      file:
+        path: $ITERM_PROFILE_PATH
+        state: directory
+
+    - name: Copy com.googlecode.iterm2.plist
+      environment: "{{terminal}}"
+      copy: 
+        src: com.googlecode.iterm2.plist
+        dest: $ITERM_PROFILE_PATH/com.googlecode.iterm2.plist
+    
+    - name: "Setup iTerm2 default: PrefsCustomFolder"
+      environment: "{{terminal}}"
+      shell: defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string $ITERM_PROFILE_PATH
+    
+    - name: "Setup iTerm2 default: LoadPrefsFromCustomFolder"
+      shell: defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+    
+    - name: "Download iTerm2 shell integration"
+      get_url:
+        url: https://iterm2.com/shell_integration/zsh
+        dest: ~/.iterm2_shell_integration.zsh
+    
+    - name: Install kubectl-prompt
+      environment: "{{terminal}}"
+      git:
+        repo: https://github.com/superbrothers/zsh-kubectl-prompt.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-kubectl-prompt
+        depth: 1
+
+    - name: Copy .zshrc
+      copy: 
+        src: .zshrc
+        dest: "{{lookup('env', 'HOME')}}/.zshrc"
+
+    - name: Install bash
+      homebrew: 
+        name: bash
+        state: latest
+
+    - name: Install zsh
+      homebrew: 
+        name: zsh
+        state: latest
+
+    - name: Check if ~/.oh-my-zsh exists
+      register: oh_my_zsh_result
+      stat:
+        path: ~/.oh-my-zsh
+
+    - name: Install ohmyzsh
+      when: not oh_my_zsh_result.stat.exists
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+
+    - name: Install utility tools
+      homebrew:
+        name: [
+          "coreutils", 
+          "binutils", 
+          "diffutils", 
+          "ed", 
+          "findutils", 
+          "gawk", 
+          "gnu-indent", 
+          "gnu-sed", 
+          "gnu-tar", 
+          "gnu-which", 
+          "gnutls", 
+          "grep", 
+          "screen", 
+          "watch", 
+          "wdiff", 
+          "wget", 
+          "make", 
+          "file-formula", 
+          "less", 
+          "openssh", 
+          "python", 
+          "rsync", 
+          "unzip", 
+          "jq", 
+          "macvim", 
+          "kubectl", 
+          "kubectx", 
+          "speedtest-cli", 
+          "htop", 
+          "bfg", 
+          "gettext", 
+          "stern", 
+          "circleci", 
+          "ipcalc", 
+          "mtr"
+        ]
+        state: latest
+
+    - name: Install gettext
+      homebrew: 
+        name: gettext
+        state: linked
+
+    - name: Fix mtr owner
+      file:
+        path: /usr/local/sbin/mtr-packet
+        owner: root
+
+    - name: Fix mtr permissions
+      file:
+        path: /usr/local/sbin/mtr-packet
+        mode: u+s 
+
+    - name: Copy ssh config
+      copy: 
+        src: ssh/ 
+        dest: ~/.ssh/

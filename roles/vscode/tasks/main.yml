@@ -1,0 +1,30 @@
+---
+    - name: Install vscode
+      homebrew_cask: 
+        name: visual-studio-code
+        state: present
+    
+    - name: Enable key repeating
+      command: defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    
+    - name: Install extensions
+      command: code --install-extension {{item}}
+      with_items:
+        - donjayamanne.githistory
+        - eamodio.gitlens
+        - EditorConfig.EditorConfig
+        - esbenp.prettier-vscode
+        - googlecloudtools.cloudcode
+        - heptio.jsonnet
+        - jmrog.vscode-nuget-package-manager
+        - hashicorp.terraform
+        - ms-azuretools.vscode-docker
+        - ms-dotnettools.csharp
+        - nobuhito.printcode
+        - yzhang.markdown-all-in-one
+        - ms-dotnettools.csharp
+    
+    - name: Copy settings
+      copy: src={{item}} dest="~/Library/Application Support/Code/User/{{item}}"
+      with_items:
+        - settings.json
