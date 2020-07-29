@@ -6,6 +6,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$HOME/.dotnet/tools"
 
+# Run the PrivilegesCLI to make us admin :)
+/Applications/Privileges.app/Contents/Resources/PrivilegesCLI --add &> /dev/null
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
