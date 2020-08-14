@@ -1,21 +1,38 @@
 ---
     - name: Disable mouse acceleration
-      shell: defaults write .GlobalPreferences com.apple.mouse.scaling -1
+      osx_defaults:
+        key: com.apple.mouse.scaling
+        type: string
+        value: -1
+        state: present
 
     - name: "Key Repeat: Fast (all the way to the right)"
-      shell: defaults write -g InitialKeyRepeat -int 15
+      osx_defaults:
+        key: InitialKeyRepeat
+        type: int
+        value: 15
+        state: present
 
     - name: "Delay Until Repeat: Short (all the way to the right)"
-      shell: defaults write -g KeyRepeat -int 2
+      osx_defaults:
+        key: KeyRepeat
+        type: int
+        value: 2
+        state: present
 
     - name: "Untick 'Correct spelling automatically'"
-      shell: defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+      osx_defaults:
+        key: NSAutomaticSpellingCorrectionEnabled
+        type: bool
+        value: false
+        state: present
 
     - name: "Untick 'Add full stop with double-space'"
-      shell: defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
-
-    - name: Disable mouse acceleration
-      shell: defaults write .GlobalPreferences com.apple.mouse.scaling -1
+      osx_defaults:
+        key: NSAutomaticPeriodSubstitutionEnabled
+        type: bool
+        value: false
+        state: present
 
     - name: "Set Keybord Shortcut 'Move focus to next window' to Command+$"
       shell: |
