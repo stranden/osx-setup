@@ -43,6 +43,7 @@ plugins=(
   terraform
   gitignore
   zsh-kubectl-prompt
+  zsh-autosuggestions
 )
 
 
