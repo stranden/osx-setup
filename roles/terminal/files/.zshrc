@@ -5,6 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$HOME/.dotnet/tools"
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # Run the PrivilegesCLI to make us admin :)
 /Applications/Privileges.app/Contents/Resources/PrivilegesCLI --add &> /dev/null
