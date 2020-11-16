@@ -14,8 +14,6 @@
         - eamodio.gitlens
         - EditorConfig.EditorConfig
         - esbenp.prettier-vscode
-        - googlecloudtools.cloudcode
-        - heptio.jsonnet
         - jmrog.vscode-nuget-package-manager
         - hashicorp.terraform
         - ms-azuretools.vscode-docker
@@ -23,6 +21,13 @@
         - nobuhito.printcode
         - yzhang.markdown-all-in-one
         - ms-dotnettools.csharp
+        - visualstudioexptteam.vscodeintellicode
+        - patrickfalknielsen.git-tag-push
+        - ms-toolsai.jupyter
+        - ms-python.vscode-pylance
+        - ms-python.python
+        - octref.vetur
+        - gaardsholt.vscode-whatthecommit
     
     - name: Copy settings
       copy: src={{item}} dest="~/Library/Application Support/Code/User/{{item}}"
