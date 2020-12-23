@@ -1,9 +1,4 @@
 ---
-    - name: Install Rider
-      homebrew_cask: 
-        name: "rider"
-        state: present
-
     - name: Install Spotify
       homebrew_cask: 
         name: "spotify"
