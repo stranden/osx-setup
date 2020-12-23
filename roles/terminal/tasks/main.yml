@@ -124,11 +124,13 @@
         state: linked
 
     - name: Fix mtr owner
+      become: true
       file:
         path: /usr/local/sbin/mtr-packet
         owner: root
 
     - name: Fix mtr permissions
+      become: true
       file:
         path: /usr/local/sbin/mtr-packet
         mode: u+s 
