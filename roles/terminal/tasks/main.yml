@@ -38,25 +38,6 @@
       get_url:
         url: https://iterm2.com/shell_integration/zsh
         dest: ~/.iterm2_shell_integration.zsh
-      
-    - name: Install kubectl-prompt
-      environment: "{{terminal}}"
-      git:
-        repo: https://github.com/superbrothers/zsh-kubectl-prompt.git
-        dest: ~/.oh-my-zsh/custom/plugins/zsh-kubectl-prompt
-        depth: 1
-
-    - name: Install zsh-autosuggestions
-      environment: "{{terminal}}"
-      git:
-        repo: https://github.com/zsh-users/zsh-autosuggestions.git
-        dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-        depth: 1
-
-    - name: Copy .zshrc
-      copy: 
-        src: .zshrc
-        dest: "{{lookup('env', 'HOME')}}/.zshrc"
 
     - name: Install bash
       homebrew: 
@@ -76,6 +57,25 @@
     - name: Install ohmyzsh
       when: not oh_my_zsh_result.stat.exists
       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
+
+    - name: Install kubectl-prompt
+      environment: "{{terminal}}"
+      git:
+        repo: https://github.com/superbrothers/zsh-kubectl-prompt.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-kubectl-prompt
+        depth: 1
+
+    - name: Install zsh-autosuggestions
+      environment: "{{terminal}}"
+      git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        depth: 1
+
+    - name: Copy .zshrc
+      copy: 
+        src: .zshrc
+        dest: "{{lookup('env', 'HOME')}}/.zshrc"
 
     - name: Install utility tools
       homebrew:
