@@ -1,4 +1,10 @@
 ---
+    - name: Create projects directory
+      file:
+        path: ~/projects
+        state: directory
+        mode: '0755'
+    
     - name: Install vscode
       homebrew_cask: 
         name: visual-studio-code
