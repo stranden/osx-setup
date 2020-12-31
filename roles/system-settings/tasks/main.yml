@@ -1,4 +1,41 @@
 ---
+    - name: Menu Bar: Customise icons show
+      osx_defaults:
+        domain: com.apple.systemuiserver
+        key: menuExtras
+        type: array
+        value:
+          - "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+          - "/System/Library/CoreServices/Menu Extras/Volume.menu"
+          - "/System/Library/CoreServices/Menu Extras/Battery.menu"
+          - "/System/Library/CoreServices/Menu Extras/Clock.menu"
+          - "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+        state: present
+        
+    - name: Menu Bar: Show Battery Percent
+      osx_defaults:
+        domain: com.apple.menuextra.battery
+        key: ShowPercent
+        type: bool
+        value: true
+        state: present
+        
+    - name: Enable firewall
+      osx_defaults:
+        domain: /Library/Preferences/com.apple.alf
+        key: globalstate
+        type: int
+        value: 1
+        state: present
+   
+    - name: Dock: Set the icon size to 45 pixels
+      osx_defaults:
+        domain: com.apple.dock
+        key: tilesize
+        type: int
+        value: 45
+        state: present
+   
     - name: Disable mouse acceleration
       osx_defaults:
         key: com.apple.mouse.scaling
