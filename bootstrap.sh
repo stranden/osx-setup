@@ -1,5 +1,7 @@
 #!/bin/bash 
 
+echo "*** Starting device bootstrap ***"
+
 #Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -23,4 +25,5 @@ then
 fi
 
 #Run ansible playbook
+echo "Running playbook 'setup-playbook.yml', please note you will be asked for you password before it runs!"
 ansible-playbook osx-setup/setup-playbook.yml --extra-vars "git_global_name=$gitName git_global_email=$gitEmail" --ask-become-pass
