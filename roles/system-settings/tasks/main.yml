@@ -34,6 +34,30 @@
         value: false
         state: present
 
+    - name: "Finder: Show path bar"
+      osx_defaults:
+        domain: com.apple.finder
+        key: ShowPathbar
+        type: bool
+        value: true
+        state: present
+        
+    - name: "Finder: Keep folders on top when sorting by name"
+      osx_defaults:
+        domain: com.apple.finder
+        key: _FXSortFoldersFirst
+        type: bool
+        value: true
+        state: present
+        
+    - name: "Finder: Use list view in all Finder windows by default"
+      osx_defaults:
+        domain: com.apple.finder
+        key: FXPreferredViewStyle
+        type: string
+        value: Nlsv
+        state: present
+
     - name: "Set Keybord Shortcut 'Move focus to next window' to Command+$"
       shell: |
         /usr/libexec/PlistBuddy -c 'Delete :AppleSymbolicHotKeys:27' ~/Library/Preferences/com.apple.symbolichotkeys.plist
