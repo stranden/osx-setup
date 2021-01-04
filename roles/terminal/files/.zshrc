@@ -95,5 +95,4 @@ alias tf=terraform
 export PATH=$HOME/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export VAULT_ADDR=https://vault.bestsellerit.com
 export LC_ALL=en_US.UTF-8
