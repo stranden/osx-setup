@@ -4,13 +4,6 @@
         name: "spotify"
         state: present
 
-    - name: Install 1Password
-      ignore_errors: True
-      homebrew_cask: 
-        name: "1password"
-        state: upgraded
-        greedy: True
-
     - name: Install Wireshark
       homebrew_cask: 
         name: "wireshark"
