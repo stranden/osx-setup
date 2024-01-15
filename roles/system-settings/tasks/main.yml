@@ -1,26 +1,33 @@
 ---
-    - name: "Menu Bar: Customise icons show"
-      osx_defaults:
-        domain: com.apple.systemuiserver
-        key: menuExtras
-        type: array
-        value:
-          - "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
-          - "/System/Library/CoreServices/Menu Extras/Volume.menu"
-          - "/System/Library/CoreServices/Menu Extras/Battery.menu"
-          - "/System/Library/CoreServices/Menu Extras/Clock.menu"
-          - "/System/Library/CoreServices/Menu Extras/AirPort.menu"
-        state: present
-        
+    - name:  "Menu Bar: Customise icons show"
+      osx_defaults: { domain: 'com.apple.controlcenter', key: "{{ item.key }}", type: "{{ item.type }}", value: "{{ item.value }}" }
+      loop:
+        - {key: "Battery", type: int, value: 18 }
+        - {key: "Bluetooth", type: int, value: 18 }
+        - {key: "Clock", type: int, value: 18 }
+        - {key: "Display", type: int, value: 18 }
+        - {key: "Sound", type: int, value: 18 }
+        - {key: "WiFi", type: int, value: 18 }
+        - {key: "AirPort", type: int, value: 18 }
+
     - name: "Menu Bar: Show Battery Percent"
       osx_defaults:
-        domain: com.apple.menuextra.battery
-        key: ShowPercent
-        type: bool
-        value: true
+        domain: com.apple.controlcenter
+        key: BatteryShowPercentage
+        type: string
+        value: "YES"
+        state: present
+        
+    - name: "Enable Dark Mode"
+      osx_defaults:
+        domain: NSGlobalDomain
+        key: AppleInterfaceStyle
+        type: string
+        value: "Dark"
         state: present
         
     - name: Enable firewall
+      become: yes
       osx_defaults:
         domain: /Library/Preferences/com.apple.alf
         key: globalstate
@@ -32,7 +39,7 @@
       osx_defaults:
         domain: com.apple.dock
         key: tilesize
-        type: int
+        type: float
         value: 45
         state: present
    

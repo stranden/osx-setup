@@ -20,19 +20,19 @@
         - eamodio.gitlens
         - EditorConfig.EditorConfig
         - esbenp.prettier-vscode
-        - jmrog.vscode-nuget-package-manager
-        - hashicorp.terraform
+        #- jmrog.vscode-nuget-package-manager
+        #- hashicorp.terraform
         - ms-azuretools.vscode-docker
-        - ms-dotnettools.csharp
-        - nobuhito.printcode
+        #- ms-dotnettools.csharp
+        #- nobuhito.printcode
         - yzhang.markdown-all-in-one
-        - ms-dotnettools.csharp
         - visualstudioexptteam.vscodeintellicode
         - patrickfalknielsen.git-tag-push
         - ms-toolsai.jupyter
         - ms-python.vscode-pylance
         - ms-python.python
         - octref.vetur
+        - njpwerner.autodocstring
         - gaardsholt.vscode-whatthecommit
     
     - name: Copy settings
