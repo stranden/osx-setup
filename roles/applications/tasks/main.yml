@@ -11,15 +11,20 @@
     #    state: upgraded
     #    greedy: True
 
-    #- name: Install Wireshark
-    #  homebrew_cask: 
-    #    name: "wireshark"
-    #    state: present
-    #    sudo_password: "{{ ansible_become_pass }}"
+    - name: Install Wireshark
+      homebrew_cask: 
+        name: "wireshark"
+        state: present
+        sudo_password: "{{ ansible_become_pass }}"
 
     - name: Install Sublime Text
       homebrew_cask: 
         name: "sublime-text"
+        state: present
+
+    - name: Install Microsoft Edge
+      homebrew_cask: 
+        name: "microsoft-edge"
         state: present
 
     #- name: Install Docker
