@@ -26,7 +26,7 @@ then
   git -C ./osx-setup pull
 else
   #Git clone the repo
-  git clone https://github.com/patrickfnielsen/osx-setup
+  git clone https://github.com/stranden/osx-setup
 fi
 
 

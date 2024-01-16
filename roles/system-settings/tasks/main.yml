@@ -25,9 +25,9 @@
         type: string
         value: "Dark"
         state: present
-        
+      
     - name: Enable firewall
-      become: yes
+      become: true
       osx_defaults:
         domain: /Library/Preferences/com.apple.alf
         key: globalstate
