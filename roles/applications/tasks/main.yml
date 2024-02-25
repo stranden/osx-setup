@@ -47,6 +47,11 @@
         name: "google-chrome"
         state: present
 
+    - name: Install Talosctl
+      homebrew: 
+        name: "siderolabs/tap/talosctl"
+        state: present
+
     #- name: Install dotnet sdk
     #  homebrew_cask: 
     #    name: "dotnet-sdk"
